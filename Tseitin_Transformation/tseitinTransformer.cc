@@ -31,7 +31,7 @@ void TseitinTransformer::transSubformula(TreeNode* subRoot) {
 }
 TreeNode* TseitinTransformer::transToNNF(TreeNode* node) {
 	if (node == nullptr)  return nullptr;
-	if (node->getContent() == "-") {
+	while (node->getContent() == "-") {
 		TreeNode* child = node->getLeftChild();
 		if (child->getContent() == "-") { //simplify --p = p
 			node = child->getLeftChild();
@@ -52,6 +52,7 @@ TreeNode* TseitinTransformer::transToNNF(TreeNode* node) {
 			node->getLeftChild()->updateLeftChild(leftSubFormula);
 			node->getRightChild()->updateLeftChild(rightSubFormula);
 		}
+		else break;
 	};
 	TreeNode* l = transToNNF(node->getLeftChild());
 	TreeNode* r = transToNNF(node->getRightChild());

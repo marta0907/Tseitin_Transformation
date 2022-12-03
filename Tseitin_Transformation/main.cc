@@ -1,11 +1,9 @@
 ﻿#include "tseitinTransformer.h"
 //#include "satSolver.h"
-#include <vector>
 #include <exception>
 #include "treeNode.h"
 #include "parser.h"
 #include <string>
-#include <sstream>
 
 
 int main() {
