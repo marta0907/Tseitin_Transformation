@@ -6,6 +6,9 @@ FormulaParser::FormulaParser(std::string ln) : tknzr{ new Tokenizer{ln} } {}
 
 TreeNode* FormulaParser::parseFormula() {
     TreeNode* resultToken = parseConjTerm();
+    if (resultToken == nullptr) {
+        throw std::runtime_error("Error: invalid input");
+    }
     while (tknzr->advanceToken("+"))
     {
         currentToken = tknzr->getToken();
@@ -19,6 +22,9 @@ TreeNode* FormulaParser::parseFormula() {
 
 TreeNode* FormulaParser::parseConjTerm() {
     TreeNode* resultToken = parseTerm();
+    if (resultToken == nullptr) {
+        throw std::runtime_error("Error: invalid input");
+    }
     while (tknzr->advanceToken("*"))
     {
         currentToken = tknzr->getToken();
@@ -41,6 +47,9 @@ TreeNode* FormulaParser::parseTerm() {
         else if (currentToken.content == "-") {
             resultNode = new OperatorNode(currentToken.content);
             TreeNode* node = parseTerm();
+            if (node == nullptr) {
+                throw std::runtime_error("Error: invalid input");
+            }
             resultNode->updateLeftChild(node);
         }
         else if (currentToken.content == "(") {

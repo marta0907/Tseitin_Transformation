@@ -1,4 +1,4 @@
-﻿//#include "tseitinTransformer.h"
+﻿#include "tseitinTransformer.h"
 //#include "satSolver.h"
 #include <vector>
 #include <exception>
@@ -17,7 +17,9 @@ int main() {
 			TreeNode* root;
 			FormulaParser fp(line);
 			root = fp.getTreeRoot();
-			std::cout << root->getContent() << std::endl;
+			TseitinTransformer tr(root);
+			tr.transform();
+			std::cout << tr.cnfString() << std::endl;
 			delete root;
 		}
 		catch (const std::exception& e) {

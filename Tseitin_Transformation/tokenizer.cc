@@ -32,7 +32,8 @@ Token Tokenizer::getToken() {
         char c = expression[index];
         switch (c)
         {
-        case(' '): {
+        case(' '):
+        case(';'): {
             if (str.size() > 0) {
                 validateStr(str);
                 resultToken.content = str;
@@ -60,21 +61,6 @@ Token Tokenizer::getToken() {
             index++;
             return resultToken;
         }
-        //case('0'):
-        //case('1'): {
-        //    if (str.size() > 0)
-        //    {
-        //        index++;
-        //        str.push_back(c);
-        //        break;
-        //    }
-        //    else {
-        //        resultToken.content = c;
-        //        resultToken.type = Constant;
-        //        index++;
-        //        return resultToken;
-        //    }
-        //}
         default:
             str.push_back(c);
             index++;

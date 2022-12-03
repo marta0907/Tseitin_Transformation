@@ -5,16 +5,18 @@
 
 class TreeNode {
     std::string content;
+    int id = 0;
     TreeNode* leftChild = nullptr;
     TreeNode* rightChild = nullptr;
-protected:
-    TreeNode* getLeftChild() const;
-    TreeNode* getRightChild() const;
 public:
+    TreeNode* getLeftChild();
+    TreeNode* getRightChild();
     TreeNode(std::string cntt);
     void updateLeftChild(TreeNode* lChild);
     void updateChildren(TreeNode* lChild, TreeNode* rChild);
     std::string getContent() const;
+    void SetId(int id);
+    int GetId();
     virtual ~TreeNode();
 };
 

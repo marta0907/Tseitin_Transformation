@@ -6,11 +6,18 @@ std::string TreeNode::getContent() const {
     return this->content;
 }
 
-TreeNode* TreeNode::getLeftChild() const {
+TreeNode* TreeNode::getLeftChild() {
     return this->leftChild;
 }
-TreeNode* TreeNode::getRightChild() const {
+TreeNode* TreeNode::getRightChild()  {
     return this->rightChild;
+}
+void TreeNode::SetId(int id) {
+    this->id = id;
+}
+
+int TreeNode::GetId() {
+    return this->id;
 }
 
 void TreeNode::updateLeftChild(TreeNode* lChild) {
